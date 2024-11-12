@@ -1,0 +1,50 @@
+{% extends 'base.html' %} {% block title %} Animal Facts {% endblock %} {% block
+content %}
+<h1>Animal Facts</h1>
+<form action="/animal_facts" method="GET">
+  <fieldset>
+    <legend>Your Info:</legend>
+
+    <label>
+      Which animal do you want facts on?
+
+      <!-- TODO: Use a for loop to show one option element for each 
+                animal. -->
+      <select name="animal">
+        {% for animal in animals_dict.keys() %}
+        <option value="{{ animal }}">{{ animal }}</option>
+        {% endfor %}
+      </select>
+    </label>
+
+    <input type="submit" value="Get Fact!" />
+  </fieldset>
+</form>
+
+<!-- TODO: If an animal was chosen, show the section below with the appropriate 
+    animal fact. -->
+
+<section id="form_results">
+  <p>Here is your animal fact:</p>
+
+  {% if selected_animal == 'koala' %}
+  <p>{{ animals_dict['koala'] }}</p>
+
+  {% elif selected_animal == 'parrot' %}
+  <p>{{ animals_dict['parrot'] }}</p>
+
+  {% elif selected_animal == 'mantis shrimp' %}
+  <p>{{ animals_dict['mantis shrimp'] }}</p>
+
+  {% elif selected_animal == 'lion' %}
+  <p>{{ animals_dict['lion'] }}</p>
+
+  {% elif selected_animal == 'narwhal' %}
+  <p>{{ animals_dict['narwhal'] }}</p>
+
+  {% else %}
+  <p>I can't find your animal. Please select an animal</p>
+  {% endif %}
+</section>
+
+{% endblock %}
